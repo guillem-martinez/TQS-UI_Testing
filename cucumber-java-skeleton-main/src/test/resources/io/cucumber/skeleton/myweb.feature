@@ -5,10 +5,6 @@ Feature: Tests a page using Selenium WebDriver
 
   Scenario: My website can be browsed
     When I go to the home page
-    Then I should see a "Oubiti" button
+    Then I should see a "Instant Gaming" button
 
-  Scenario: My website has a "About Me" section
-    Given I go to the home page
-    When I click on "Oubiti" button
-    Then I should see a "About Me" text
-    And I take a screenshot with filename "About Me"
+
