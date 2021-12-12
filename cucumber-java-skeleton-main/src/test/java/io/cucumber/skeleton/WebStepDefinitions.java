@@ -8,6 +8,7 @@ import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import java.time.*;
 
 public class WebStepDefinitions {
 
@@ -51,9 +52,15 @@ public class WebStepDefinitions {
         driver.findElement(By.linkText(button_text)).click();
     }
 
+    @When("I click on {string} classButton")
+    public void iClickOnClassButton(String classButton) {
+        driver.findElement(By.cssSelector("button[@class='"+classButton+"']")).click();
+    }
+
     @When("I click on {string} IdButton")
     public void iClickOnIdButton(String button_text) {
         driver.findElement(By.id(button_text)).click();
+        //driver.navigate().refresh();
     }
 
     @And("I click on OkButton")
@@ -81,9 +88,10 @@ public class WebStepDefinitions {
     }
 
     @Then("I should see the alert")
-    public void iShouldSeeTheAlert(){
+    public void iShouldSeeTheAlert()throws InterruptedException{
         Alert alert = driver.switchTo().alert();
-        String alertMSG = alert.getText();
+        String alertMSG = driver.switchTo().alert().getText();
+        Thread.sleep(2000);
         Assertions.assertEquals("Correo electrónico o contraseña errónea.",alertMSG);
         alert.accept();
     }

@@ -18,4 +18,8 @@ Feature: Search products in the page
     Then I should see a "Lo sentimos, no se han encontrado resultados :(" text
     And I should see a "Buscar top ventas" button
 
-  Scenario: No Text in the Search Bar show games
+  Scenario: No Text in the Search Bar show all games
+    Given I go to the home page
+    When I click on "ig-header-search-box-submit" IdButton
+    #The ... indicates lots of pages of results
+    Then I should see a "..." text
