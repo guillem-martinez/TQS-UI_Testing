@@ -1,4 +1,4 @@
-Feature: Check if the navigation between categories is correct
+Feature: Check if the navigation between categories is correctly done
 
   Scenario: I try to go to steam
     Given I go to the home page
