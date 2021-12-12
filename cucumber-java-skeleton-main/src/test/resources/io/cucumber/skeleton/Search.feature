@@ -6,6 +6,7 @@ Feature: Search products in the page
     And I click on "ig-header-search-box-input" IdButton
     When I write on the search bar "FIFA 22"
     And I click on "ig-header-search-box-submit" IdButton
+    And I wait 2 seconds
     Then I go to the page "https://www.instant-gaming.com/es/busquedas/?q=FIFA+22"
 
 

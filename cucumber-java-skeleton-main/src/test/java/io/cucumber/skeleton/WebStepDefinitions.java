@@ -52,9 +52,14 @@ public class WebStepDefinitions {
         driver.findElement(By.linkText(button_text)).click();
     }
 
+    @When("I click on {string} language")
+    public void iClickOnLanguage(String lang) {
+        driver.findElement(By.cssSelector("a[title='"+lang+"']")).click();
+    }
+
     @When("I click on {string} classButton")
     public void iClickOnClassButton(String classButton) {
-        driver.findElement(By.cssSelector("button[@class='"+classButton+"']")).click();
+        driver.findElement(By.cssSelector("button[class='"+classButton+"']")).click();
     }
 
     @When("I click on {string} IdButton")
@@ -87,6 +92,13 @@ public class WebStepDefinitions {
         Assertions.assertTrue(button);
     }
 
+    @Then("I should see the $ currency")
+    public void iShouldSeeThe$Currency() {
+        By byXPath = By.xpath("/html/body/div[2]/div[2]/div[2]/div[2]/div[1]/a/div[2]/div[2]");
+        boolean dollar = driver.findElements(byXPath).contains("$");
+        Assertions.assertTrue(dollar);
+    }
+
     @Then("I should see the alert")
     public void iShouldSeeTheAlert()throws InterruptedException{
         Alert alert = driver.switchTo().alert();
@@ -108,8 +120,21 @@ public class WebStepDefinitions {
     }
     @Then("I go to the page {string}")
     public void iGoToThePage(String page) {
-        driver.get(page);
+        String currentURL= driver.getCurrentUrl();
+        Assertions.assertEquals(page,currentURL);
     }
+
+    @And("I click on {string} game")
+    public void iClickOnGame(String game) {
+        driver.findElement(By.cssSelector("img[title='"+game+"']")).click();
+    }
+
+    @And("I wait 2 seconds")
+    public void iWait2Seconds()throws InterruptedException{
+        Thread.sleep(2000);
+    }
+
+
 
     @AfterAll()
     public static void tearDown() {
