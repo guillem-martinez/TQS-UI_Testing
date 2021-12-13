@@ -47,6 +47,13 @@ public class WebStepDefinitions {
         Assertions.assertTrue(present);
     }
 
+    @Then("I should not see a {string} button/text")
+    public void iShouldNotSeeAButton(String text) {
+        By byXPath = By.xpath("//*[contains(text(),'" + text + "')]");
+        boolean present = driver.findElements(byXPath).size() > 0;
+        Assertions.assertFalse(present);
+    }
+
     @When("I click on {string} button")
     public void iClickOnButton(String button_text) {
         driver.findElement(By.linkText(button_text)).click();
@@ -71,7 +78,7 @@ public class WebStepDefinitions {
     @And("I click on OkButton")
     public void iClickOnOkButton() {
         driver.findElement(By.cssSelector("input[value='OK']")).click();
-        driver.navigate().refresh();
+        //driver.navigate().refresh();
     }
 
     @And("I take a screenshot with filename {string}")
@@ -108,6 +115,12 @@ public class WebStepDefinitions {
         alert.accept();
     }
 
+    @And("I accept the alert")
+    public void iAcceptTheAlert(){
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+
     @And("I introduce the credentials email: {string} password: {string}")
     public void iIntroduceTheCredentials(String email, String pswd){
         driver.findElement(By.cssSelector("input[name='email']")).sendKeys(email);
@@ -118,6 +131,23 @@ public class WebStepDefinitions {
     public void iWriteOnTheSearchBar(String search){
         driver.findElement(By.cssSelector("input[id='ig-header-search-box-input']")).sendKeys(search);
     }
+
+    @When("I write {string}")
+    public void iWrite(String text){
+        driver.findElement(By.cssSelector("input[name='rname']")).clear();
+        driver.findElement(By.cssSelector("input[name='rname']")).sendKeys(text);
+    }
+
+    @And("I click on Aceptar")
+    public void iClickOnAceptar(){
+        driver.findElement(By.cssSelector("input[value='Aceptar']")).click();
+    }
+
+    @And("I click on {string} aButton")
+    public void iClickOnEdit(String s){
+        driver.findElement(By.cssSelector("a[class='"+s+"']")).click();
+    }
+
     @Then("I go to the page {string}")
     public void iGoToThePage(String page) {
         String currentURL= driver.getCurrentUrl();
@@ -129,9 +159,17 @@ public class WebStepDefinitions {
         driver.findElement(By.cssSelector("img[title='"+game+"']")).click();
     }
 
-    @And("I wait 2 seconds")
-    public void iWait2Seconds()throws InterruptedException{
-        Thread.sleep(2000);
+    @And("I wait {int} seconds")
+    public void iWait2Seconds(int secs)throws InterruptedException{
+        Thread.sleep(secs*1000);
+    }
+
+    @And("I log in")
+    public void iLogIn(){
+        iClickOnIdButton("ig-responsive-menu-button");
+        iClickOnButton("Mi cuenta");
+        iIntroduceTheCredentials("bielbardaji123@gmail.com","bielguillem1234");
+        iClickOnOkButton();
     }
 
 

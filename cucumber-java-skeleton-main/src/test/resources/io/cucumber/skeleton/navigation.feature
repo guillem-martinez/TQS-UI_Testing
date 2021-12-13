@@ -13,7 +13,7 @@ Feature: Check if the navigation between categories is correctly done
     When I click on "Origin" button
     Then I go to the page "https://www.instant-gaming.com/es/juegos/origin/"
 
-  Scenario: I try to go to RockStar
+  Scenario: I try to go to Rockstar
     Given I go to the home page
     And I click on "PC" button
     When I click on "Rockstar" button

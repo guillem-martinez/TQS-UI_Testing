@@ -24,3 +24,4 @@ Feature: Tests the change of the region
     And I wait 2 seconds
     And I click on "Football Manager 2022" game
     Then I should see a "Informazioni sul gioco" text
+    And I should see a "Cosa c’è da sapere" text
