@@ -144,7 +144,7 @@ public class WebStepDefinitions {
     }
 
     @And("I click on {string} aButton")
-    public void iClickOnEdit(String s){
+    public void iClickOnAButton(String s){
         driver.findElement(By.cssSelector("a[class='"+s+"']")).click();
     }
 

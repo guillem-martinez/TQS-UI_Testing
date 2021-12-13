@@ -6,10 +6,10 @@ Feature: Test the shopping process.
     And I wait 2 seconds
     And I click on "Football Manager 2022" game
     And I wait 2 seconds
-    When I click on "ig-responsive-menu-button" IdButton
-    And I click on "ig-product-main-panel-addwishlist" IdButton
+    When I click on "ig-product-main-panel-addwishlist" IdButton
     And I wait 1 seconds
-    And I click on "Whishlist" button
+    And I click on "ig-responsive-menu-button" IdButton
+    And I click on "ig-logged-link ig-logged-link-wishlist " aButton
     And I wait 2 seconds
     Then I should see a "Football Manager 2022" text
 
@@ -19,10 +19,10 @@ Feature: Test the shopping process.
     And I wait 2 seconds
     And I click on "Football Manager 2022" game
     And I wait 2 seconds
-    And I click on "ig-responsive-menu-button" IdButton
     And I click on "ig-product-main-panel-addwishlist" IdButton
     And I wait 1 seconds
-    And I click on "Whishlist" button
+    And I click on "ig-responsive-menu-button" IdButton
+    And I click on "ig-logged-link ig-logged-link-wishlist " aButton
     And I wait 2 seconds
     When I click on "remove" aButton
     And I wait 1 seconds
@@ -36,7 +36,7 @@ Feature: Test the shopping process.
     And I click on "Football Manager 2022" game
     And I wait 2 seconds
     When I click on "Comprar" button
-    And I wait 1 seconds
+    And I wait 10 seconds
     Then I should see a "Resumen del pedido" text
-    And I should see a "Footbal Manager 2022" text
+    #And I should see a "Footbal Manager 2022 (Europe)" text
     And I should see a "Pagar" button
