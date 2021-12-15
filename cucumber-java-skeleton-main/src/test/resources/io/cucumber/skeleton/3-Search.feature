@@ -1,5 +1,12 @@
 Feature: Search products in the page
 
+  Scenario: No text in the Search Bar show all games
+    Given I go to the home page
+    When I click on "ig-header-search-box-submit" IdButton
+    #The ... indicates lots of pages of results
+    And I wait 2 seconds
+    Then I should see a "..." text
+
   Scenario:URL changes to the search
     Given I go to the home page
 #It is not a button, it's the search bar
@@ -19,8 +26,4 @@ Feature: Search products in the page
     Then I should see a "Lo sentimos, no se han encontrado resultados :(" text
     And I should see a "Buscar top ventas" button
 
-  Scenario: No Text in the Search Bar show all games
-    Given I go to the home page
-    When I click on "ig-header-search-box-submit" IdButton
-    #The ... indicates lots of pages of results
-    Then I should see a "..." text
+

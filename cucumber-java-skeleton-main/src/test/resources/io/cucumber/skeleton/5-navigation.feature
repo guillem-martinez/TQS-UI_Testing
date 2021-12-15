@@ -1,5 +1,9 @@
 Feature: Check if the navigation between categories is correctly done
 
+  Scenario: My website can be browsed
+    When I go to the home page
+    Then I should see a "Instant Gaming" button
+
   Scenario: I try to go to steam
     Given I go to the home page
     And I click on "PC" button

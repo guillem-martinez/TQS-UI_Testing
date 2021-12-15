@@ -49,6 +49,7 @@ public class WebStepDefinitions {
 
     @Then("I should not see a {string} button/text")
     public void iShouldNotSeeAButton(String text) {
+        driver.navigate().refresh();
         By byXPath = By.xpath("//*[contains(text(),'" + text + "')]");
         boolean present = driver.findElements(byXPath).size() > 0;
         Assertions.assertFalse(present);
@@ -107,10 +108,10 @@ public class WebStepDefinitions {
     }
 
     @Then("I should see the alert")
-    public void iShouldSeeTheAlert()throws InterruptedException{
+    public void iShouldSeeTheAlert(){
         Alert alert = driver.switchTo().alert();
         String alertMSG = driver.switchTo().alert().getText();
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
         Assertions.assertEquals("Correo electrónico o contraseña errónea.",alertMSG);
         alert.accept();
     }
@@ -160,7 +161,7 @@ public class WebStepDefinitions {
     }
 
     @And("I wait {int} seconds")
-    public void iWait2Seconds(int secs)throws InterruptedException{
+    public void iWaitSeconds(int secs)throws InterruptedException{
         Thread.sleep(secs*1000);
     }
 
